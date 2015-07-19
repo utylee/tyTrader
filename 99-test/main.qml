@@ -24,9 +24,9 @@ ApplicationWindow {
 			id : animScale
 			running : true
 			NumberAnimation {
-				from : 2.0 
+				from : 4.0 
 				to : 0.5
-				duration : 4000
+				duration : 8000
 			}
 		}
 	}
