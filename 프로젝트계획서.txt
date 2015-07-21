@@ -1,9 +1,0 @@
-[x] qml 말고 sequential animation이 가능한지 알아보기  ----> 안되는 듯!
-[x] pyqt 상에서 qml 애니메이션 올리기
-[ ] asyncio가 qml animation 중에도 블러킹없이 제대로 동작하는지 테스트해보기
-[ ] pyqt와 qml(혹은 native qt)를 이용해 파이썬 상에서 bar 클래스 구현 
-	[ ] 프러퍼티들 구상 ( 가격, 시간, 너비, 색상, etc)
-	[ ] 에니메이션등 메써드 관련 기능 구현
-[ ] bar클래스를 사용해 chart 클래스를 작성
-[ ] kiwoom 제공 모듈로 python에서 접근 가능한지 테스트
-[ ] 그게 안된다면 대신 모듈을 이용해 chart 클래스 자료 적용 테스트
