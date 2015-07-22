@@ -4,7 +4,7 @@
 [ ] pyqt와 qml(혹은 native qt)를 이용해 파이썬 상에서 bar 클래스 구현 
 	[ ] 프러퍼티들 구상 ( 가격, 시간, 너비, 색상, etc)
 	[ ] 에니메이션등 메써드 관련 기능 구현
-		[x] python <--> qml 간 invoke 테스트
+		[ ] python <--> qml 간 invoke 테스트
 [ ] 어디까지를 python이 담당하고 어디까지를 qml이 담당할 지 고민하기
 [ ] bar클래스를 사용해 chart 클래스를 작성
 [ ] kiwoom 제공 모듈로 python에서 접근 가능한지 테스트
