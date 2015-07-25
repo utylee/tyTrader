@@ -15,6 +15,7 @@ app = QGuiApplication(sys.argv)
 loop = QEventLoop(app)
 engine = QQmlApplicationEngine("main.qml")
 
+
 #아래에서 리턴받는 객체는 QQuickWindow였습니다. 
 window = engine.rootObjects()[0]
 window.show()
