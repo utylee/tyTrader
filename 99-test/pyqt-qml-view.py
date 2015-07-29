@@ -35,6 +35,7 @@ class CCandle:
         # qml 상의 메써드를 호출합니다
         pass
 
+
 #QQuickWindow.parent.
 @asyncio.coroutine
 def printInterval():

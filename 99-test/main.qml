@@ -53,7 +53,7 @@ ApplicationWindow {
 			NumberAnimation {
 				from : 2.0 
 				to : 0.5
-				duration : 8000
+				duration : 3000
 			}
 		}
 	}
