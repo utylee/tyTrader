@@ -3,8 +3,8 @@ import asyncio
 import time
 
 from quamash import QEventLoop, QThreadExecutor
-from win32gui import SetWindowPos
-import win32con
+#from win32gui import SetWindowPos
+#import win32con
 
 from PyQt5.QtGui import QGuiApplication
 from PyQt5.QtQml import QQmlApplicationEngine
