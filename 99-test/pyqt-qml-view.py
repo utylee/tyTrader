@@ -36,8 +36,6 @@ class CCandle:
         # qml 상의 메써드를 호출합니다
         pass
 
-@asyncio.coroutine
-def dummysleep():
     
 
 #QQuickWindow.parent.
