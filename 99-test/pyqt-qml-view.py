@@ -49,7 +49,7 @@ def printInterval():
         elaptime = curtime - inittime
         #print(elaptime)
         if elaptime > 2:
-            print("{}".format(elaptime))
+            #print("{}".format(elaptime))
             inittime = curtime
             #loop.call_soon_threadsafe(activate)
 
