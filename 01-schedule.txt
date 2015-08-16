@@ -1,6 +1,7 @@
 [x] qml 말고 sequential animation이 가능한지 알아보기  ----> 안되는 듯!
 [x] pyqt 상에서 qml 애니메이션 올리기
 [x] asyncio가 qml animation 중에도 블러킹없이 제대로 동작하는지 테스트해보기
+[ ] yield from asy..sleep(.01) 말고 릴리즈 하는 방법은 없을지 
 [ ] pyqt와 qml(혹은 native qt)를 이용해 파이썬 상에서 bar 클래스 구현 
 	[ ] 연두색 사각형이 python에서 전달한 정보에 따라 크기가 변하는 샘플 제작
 	[ ] 프러퍼티들 구상 ( 가격, 시간, 너비, 색상, etc)

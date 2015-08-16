@@ -30,11 +30,15 @@ class CCandle:
         self.price = 1000
         self.time = 0 
 
+
     # 가격을 설정합니다.
     def setPrice(self, price):
         # qml 상의 메써드를 호출합니다
         pass
 
+@asyncio.coroutine
+def dummysleep():
+    
 
 #QQuickWindow.parent.
 @asyncio.coroutine

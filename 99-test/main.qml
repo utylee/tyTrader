@@ -45,8 +45,10 @@ ApplicationWindow {
 		width : 100
 		height : 100
 		//anchors.centerIn : parent
-		color : "grey"
+		//color : "grey"
+		color : "lightgreen"
 
+		/*
 		SequentialAnimation on scale {
 			id : animScale
 			running : true
@@ -56,5 +58,7 @@ ApplicationWindow {
 				duration : 3000
 			}
 		}
-	}
+		*/
+   }
+
 }
