@@ -7,6 +7,8 @@ ApplicationWindow {
 	width: 400
 	height : 400
 	title : qsTr("Utylee")
+	//signal trigger
+	//Component.onCompleted : trigger()
 
 	/*
 	Button {
@@ -42,11 +44,21 @@ ApplicationWindow {
 
     //renderType: Text.NativeRendering
 	Rectangle {
+		objectName : "myObject"
+		signal trigger 
+		//signal clicked 
 		width : 100
 		height : 100
 		//anchors.centerIn : parent
 		//color : "grey"
 		color : "lightgreen"
+		//Component.onCompleted : trigger()
+		Component.onCompleted : funcLoad()
+
+		function funcLoad() {
+			Service.onLoad()	
+		}
+
 
 		/*
 		SequentialAnimation on scale {
@@ -60,5 +72,16 @@ ApplicationWindow {
 		}
 		*/
    }
+
+   Button {
+	   signal trigger
+	   objectName : "myButton"
+	   width : 120
+	   height : 80
+
+	   //color : "black"
+	   onClicked : trigger()
+   }
+
 
 }

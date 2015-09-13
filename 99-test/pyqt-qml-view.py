@@ -8,7 +8,7 @@ from quamash import QEventLoop, QThreadExecutor
 
 from PyQt5.QtGui import QGuiApplication
 from PyQt5.QtQml import QQmlApplicationEngine
-from PyQt5.QtCore import QUrl
+from PyQt5.QtCore import QUrl, QObject, pyqtSlot
 from PyQt5.QtQuick import QQuickView, QQuickWindow
 
 app = QGuiApplication(sys.argv)
@@ -18,7 +18,7 @@ engine = QQmlApplicationEngine("main.qml")
 
 #아래에서 리턴받는 객체는 QQuickWindow였습니다. 
 window = engine.rootObjects()[0]
-window.show()
+#window.show()
 
 asyncio.set_event_loop(loop)
 
@@ -38,38 +38,73 @@ class CCandle:
 
     
 
-#QQuickWindow.parent.
-@asyncio.coroutine
-def printInterval():
+class Test():
+    def __init__(self):
+        self.count = 0
 
-    inittime = loop.time()
+    def onClicked(self):
+        ''' invoke 함수 실행'''
+        print('onClicked 호출됨 ^^')
 
-    while 1:
-        curtime = loop.time()
-        elaptime = curtime - inittime
-        #print(elaptime)
-        if elaptime > 2:
-            #print("{}".format(elaptime))
-            inittime = curtime
-            #loop.call_soon_threadsafe(activate)
+    def onLoad(self):
+        ''' invoke 함수 실행'''
+        print('onLoad 호출됨 ^^')
 
-            #천신만고 끝에 activeWindow 대신 아래 함수를 사용해야한다는 것을
-            # 깨달았습니다.
-            window.requestActivate()
+    #QQuickWindow.parent.
+    @asyncio.coroutine
+    def printInterval(self):
 
-        yield from asyncio.sleep(.01) 
+        inittime = loop.time()
+        myRect = window.findChild(QObject, "myObject")
+        myButton = window.findChild(QObject, "myButton")
+        #myApp.trigger.connect(self.onLoad)
+        #myRect.onLoad.connect(self.onLoad())
+        #myRect.clicked.connect(self.onLoad())
+        myRect.trigger.connect(self.onLoad)
+        myButton.trigger.connect(self.onClicked)
 
-    #for i in range(80):
-        #curtime = loop.time()
-        #print("{} {}".format(i, curtime - inittime))
-        #yield from asyncio.sleep(0.001)
+        assert myRect is not None
+        print(myRect)
 
-        #time.sleep(0.1)
+        window.show()
+        while 1:
+            curtime = loop.time()
+            elaptime = curtime - inittime
+            #print(elaptime)
+            if elaptime > 2:
+                #print("{}".format(elaptime))
+                inittime = curtime
+                #loop.call_soon_threadsafe(activate)
+
+                #천신만고 끝에 activeWindow 대신 아래 함수를 사용해야한다는 것을
+                # 깨달았습니다.
+                window.requestActivate()
+
+            yield from asyncio.sleep(.01) 
+
+        #for i in range(80):
+            #curtime = loop.time()
+            #print("{} {}".format(i, curtime - inittime))
+            #yield from asyncio.sleep(0.001)
+
+            #time.sleep(0.1)
+
+class Service(QObject):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+
+    @pyqtSlot()
+    def onLoad(self):
+        print('onLoad 를 실행했습니다 ^^')
 
 with loop:
     try:
+        test = Test()
+        service = Service()
+
+        window.setContextProperty('Service', service)
         #loop.run_forever()
-        loop.run_until_complete(printInterval())
+        loop.run_until_complete(test.printInterval())
     except:
         pass
 
