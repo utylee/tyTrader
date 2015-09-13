@@ -13,11 +13,12 @@ from PyQt5.QtQuick import QQuickView, QQuickWindow
 
 app = QGuiApplication(sys.argv)
 loop = QEventLoop(app)
-engine = QQmlApplicationEngine("main.qml")
+#engine = QQmlApplicationEngine("main.qml")
+engine = QQmlApplicationEngine()
 
 
 #아래에서 리턴받는 객체는 QQuickWindow였습니다. 
-window = engine.rootObjects()[0]
+#window = engine.rootObjects()[0]
 #window.show()
 
 asyncio.set_event_loop(loop)
@@ -102,8 +103,14 @@ with loop:
         test = Test()
         service = Service()
 
-        window.setContextProperty('Service', service)
         #loop.run_forever()
+        #window = engine.rootObjects()[0]
+        ctx = engine.rootContext()
+        ctx.setContextProperty('Service', service)
+        engine.load("main.qml")
+        window = engine.rootObjects()[0]
+        #window.setContextProperty('Service', service)
+
         loop.run_until_complete(test.printInterval())
     except:
         pass
