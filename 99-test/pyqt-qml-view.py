@@ -51,23 +51,21 @@ class Test():
         ''' invoke 함수 실행'''
         print('onLoad 호출됨 ^^')
 
-    #QQuickWindow.parent.
     @asyncio.coroutine
     def printInterval(self):
 
         inittime = loop.time()
         myRect = window.findChild(QObject, "myObject")
         myButton = window.findChild(QObject, "myButton")
-        #myApp.trigger.connect(self.onLoad)
-        #myRect.onLoad.connect(self.onLoad())
-        #myRect.clicked.connect(self.onLoad())
         myRect.trigger.connect(self.onLoad)
         myButton.trigger.connect(self.onClicked)
 
-        assert myRect is not None
-        print(myRect)
+        #assert myRect is not None
+        #print(myRect)
 
         window.show()
+       
+        '''
         while 1:
             curtime = loop.time()
             elaptime = curtime - inittime
@@ -80,8 +78,8 @@ class Test():
                 #천신만고 끝에 activeWindow 대신 아래 함수를 사용해야한다는 것을
                 # 깨달았습니다.
                 window.requestActivate()
-
-            yield from asyncio.sleep(.01) 
+            yield from asyncio.sleep(.1) 
+        ''' 
 
         #for i in range(80):
             #curtime = loop.time()
@@ -90,13 +88,71 @@ class Test():
 
             #time.sleep(0.1)
 
+
+class Dummy():
+    def __init__(self, service):
+        self.service = service
+
+    @asyncio.coroutine
+    def retFunc(self):
+        print('retFunc:in')
+        fut = asyncio.Future()
+        asyncio.async(self.service.coro(fut))
+        yield from fut
+        print('!!!!!!!!!!!!')
+        print('retFunc:after yield from')
+    
+
 class Service(QObject):
     def __init__(self, parent=None):
         super().__init__(parent)
+        self.dummy = Dummy(self)
+
+    @asyncio.coroutine
+    def coro(self, future):
+        print('coro:in')
+        self.future = future
+        window = engine.rootObjects()[0]
+        myObject = window.findChild(QObject, "myObject")
+        myObject.funcSetResult()
+
+    @pyqtSlot()
+    def setResult(self):
+        print('Service.setResult()')
+        self.future.set_result('')
+            
 
     @pyqtSlot()
     def onLoad(self):
         print('onLoad 를 실행했습니다 ^^')
+
+    @pyqtSlot()
+    def onClicked(self):
+        print('onClicked 를 실행했습니다 ^^')
+        #asyncio.ensure_future(self.dummy.retFunc())
+        asyncio.async(self.dummy.retFunc())
+        #yield from fut
+        print('async execute')
+        #yield from self.dummy.retFunc()
+        #self.retFunc()
+        print('헤헤')
+        #loop.call_soon(self.retFunc)
+
+    def retFunc(self):
+        # qml 내의 함수를 invoke 합니다
+        print('in retFunc')
+
+        window = engine.rootObjects()[0]
+        myObject = window.findChild(QObject, "myObject")
+        myObject.funcRetClicked()
+        '''
+        with QThreadExecutor(1) as exec:
+            window = engine.rootObjects()[0]
+            myObject = window.findChild(QObject, "myObject")
+            #loop.call_soon(myObject.funcRetClicked())
+            #myObject.funcRetClicked()
+            loop.run_in_executor(exec, myObject.funcRetClicked)
+        '''
 
 with loop:
     try:
@@ -104,14 +160,17 @@ with loop:
         service = Service()
 
         #loop.run_forever()
-        #window = engine.rootObjects()[0]
+
+        # rootObjects 실행전 context를 선언/추가해줍니다.
         ctx = engine.rootContext()
         ctx.setContextProperty('Service', service)
+
         engine.load("main.qml")
         window = engine.rootObjects()[0]
         #window.setContextProperty('Service', service)
 
         loop.run_until_complete(test.printInterval())
+        loop.run_forever()
     except:
         pass
 

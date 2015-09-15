@@ -54,9 +54,32 @@ ApplicationWindow {
 		color : "lightgreen"
 		//Component.onCompleted : trigger()
 		Component.onCompleted : funcLoad()
+		//onClicked : funcClicked()
+
 
 		function funcLoad() {
 			Service.onLoad()	
+		}
+
+		function funcClicked() {
+			Service.onClicked()	
+
+			width=200
+			height=200
+		}
+
+		function funcRetClicked() {
+			width=400
+			height=400
+		}
+
+		function funcSetResult() {
+			Service.setResult()
+		}
+
+		MouseArea {
+			anchors.fill : parent
+			onClicked : parent.funcClicked()
 		}
 
 
