@@ -103,7 +103,8 @@ ApplicationWindow {
 	   height : 80
 
 	   //color : "black"
-	   onClicked : trigger()
+	   //onClicked : trigger()
+	   onClicked : Service.onButtonClicked()
    }
 
 

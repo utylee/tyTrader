@@ -19,6 +19,7 @@ engine = QQmlApplicationEngine()
 
 rsock, wsock = socket.socketpair()
 
+
 #아래에서 리턴받는 객체는 QQuickWindow였습니다. 
 #window = engine.rootObjects()[0]
 #window.show()
@@ -32,7 +33,6 @@ class CCandle:
     def __init__(self):
         self.price = 1000
         self.time = 0 
-
 
     # 가격을 설정합니다.
     def setPrice(self, price):
@@ -103,12 +103,24 @@ class Dummy():
         yield from fut
         print('!!!!!!!!!!!!')
         print('retFunc:after yield from')
+
+    def reader(self):
+        buf = rsock.recv(1)
+        print(buf)
     
 
+
 class Service(QObject):
-    def __init__(self, parent=None):
+    def __init__(self, loop, parent=None):
+        self.loop = loop
         super().__init__(parent)
         self.dummy = Dummy(self)
+        print(rsock)
+        print(self.loop)
+        #self.loop.add_reader(rsock, self.dummy.reader)
+        self.loop.add_reader(rsock.fileno(), self.dummy.reader)
+        #self.loop.add_reader(rsock, reader)
+        #self.loop.add_reader(wsock.fileno(), reader)
 
     @asyncio.coroutine
     def coro(self, future):
@@ -127,6 +139,10 @@ class Service(QObject):
     @pyqtSlot()
     def onLoad(self):
         print('onLoad 를 실행했습니다 ^^')
+
+    @pyqtSlot()
+    def onButtonClicked(self):
+        self.loop.call_soon(wsock.send, b'x')
 
     @pyqtSlot()
     def onClicked(self):
@@ -159,10 +175,11 @@ class Service(QObject):
 with loop:
     try:
         test = Test()
-        service = Service()
+        service = Service(loop)
 
         #loop.run_forever()
 
+        print('1')
         # rootObjects 실행전 context를 선언/추가해줍니다.
         ctx = engine.rootContext()
         ctx.setContextProperty('Service', service)
