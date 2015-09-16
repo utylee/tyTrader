@@ -1,6 +1,7 @@
 import sys
 import asyncio
 import time
+import socket
 
 from quamash import QEventLoop, QThreadExecutor
 #from win32gui import SetWindowPos
