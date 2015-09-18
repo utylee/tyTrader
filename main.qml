@@ -4,7 +4,7 @@ import QtQuick.Controls 1.0
 ApplicationWindow {
 	id : root
 
-	width: 400
+	width: 600
 	height : 400
 	title : qsTr("Utylee")
 	//signal trigger

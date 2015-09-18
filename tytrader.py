@@ -123,7 +123,7 @@ class Service(QObject):
         print(self.loop)
 
         # QEventLoop 즉, quamash를 통한 loop에서는add_reader를 할 때
-        # sock.fileno()를 통해야만 한다는 사실을 주목하셔야 합니다
+        # sock.fileno()를 통해야만 한다는 사실을 알게 되었습니다.
         self.loop.add_reader(rsock.fileno(), self.dummy.reader)
         self.loop.add_reader(rsock2.fileno(), self.dummy.reader2)
         #self.loop.add_reader(rsock, reader)
@@ -164,7 +164,6 @@ class Service(QObject):
         print('async execute')
         #yield from self.dummy.retFunc()
         #self.retFunc()
-        print('헤헤')
         #loop.call_soon(self.retFunc)
 
     def retFunc(self):
@@ -195,7 +194,8 @@ with loop:
         ctx = engine.rootContext()
         ctx.setContextProperty('Service', service)
 
-        engine.load("main.qml")
+        #engine.load("main.qml")
+        engine.load("qml/tytrader.qml")
         window = engine.rootObjects()[0]
         #window.setContextProperty('Service', service)
 
