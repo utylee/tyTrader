@@ -18,7 +18,6 @@ loop = QEventLoop(app)
 engine = QQmlApplicationEngine()
 
 rsock, wsock = socket.socketpair()
-rsock2, wsock2 = socket.socketpair()
 
 
 #아래에서 리턴받는 객체는 QQuickWindow였습니다. 
