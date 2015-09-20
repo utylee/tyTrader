@@ -1,6 +1,9 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
+import "logic.js" as Logic
 
+// 칼라코드 임시 기록
+// strawberry #FF0080
 ApplicationWindow {
 // QQmlApplicationEngine을 이용하니 'failed to load component로 나옵니다
 //Rectangle {
