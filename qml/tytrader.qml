@@ -12,8 +12,26 @@ ApplicationWindow {
 	width: 600
 	height : 400
 	title : qsTr("Utylee")
+
+	property Component compo
+	property var bar
 	//signal trigger
 	//Component.onCompleted : trigger()
+	
+
+	Rectangle {
+		id : rectBar
+
+		//x : 10
+		//y : 10
+		width : 30
+		height : 80
+
+		Component.onCompleted : {
+			compo = Qt.createComponent("bar.qml");
+			bar = compo.createObject(rectBar)
+		}
+	}
 
 	/*
 	Button {
