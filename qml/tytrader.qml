@@ -22,15 +22,19 @@ ApplicationWindow {
 	Rectangle {
 		id : rectBar
 
-		//x : 10
-		//y : 10
-		width : 30
-		height : 80
+		x : 400
+		y : 400
+		width : 130
+		height : 180
 
+		color : "red"
+		/*
 		Component.onCompleted : {
 			compo = Qt.createComponent("bar.qml");
 			bar = compo.createObject(rectBar)
+			//bar = compo.createObject(root)
 		}
+		*/
 	}
 
 	/*
@@ -74,7 +78,8 @@ ApplicationWindow {
 		height : 100
 		//anchors.centerIn : parent
 		//color : "grey"
-		color : "lightgreen"
+		//color : "lightgreen"
+		color : "#FF0080"
 		//Component.onCompleted : trigger()
 		Component.onCompleted : funcLoad()
 		//onClicked : funcClicked()
