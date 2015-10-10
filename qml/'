@@ -19,35 +19,22 @@ ApplicationWindow {
 	//Component.onCompleted : trigger()
 	
 
-	Row {
-		x : 100
+	Rectangle {
+		id : rectBar
+
+		x : 200
 		y : 200
-		spacing : 1
+		width : 130
+		height : 180
 
-		// 첫번째 사각형
-		//Rectangle {
-		Item {
-			id : rectBar
-
-			width : 10 
-			height : 80
-
-			/*
-			Rectangle {
-				width : 10
-				height : 80
-
-				color : "#ff0080"
-				*/
-				
-				Component.onCompleted : {
-					compo = Qt.createComponent("bar.qml");
-					bar = compo.createObject(rectBar)
-					//bar = compo.createObject(root)
-				}
-				
-		   //}	
+		color : "red"
+		/*
+		Component.onCompleted : {
+			compo = Qt.createComponent("bar.qml");
+			bar = compo.createObject(rectBar)
+			//bar = compo.createObject(root)
 		}
+		*/
 	}
 
 	/*
@@ -139,9 +126,8 @@ ApplicationWindow {
 		*/
    }
 
-   Row {
+   row {
 	   spacing: 30
-	   y : 100
 	   Button {
 		   signal trigger
 		   objectName : "myButton"
@@ -157,6 +143,8 @@ ApplicationWindow {
 		Button {
 		   signal trigger
 		   objectName : "myButton"
+		   x : 100
+		   y : 100
 		   width : 120
 		   height : 80
 

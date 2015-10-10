@@ -196,7 +196,6 @@ with loop:
 
         #engine.load("main.qml")
         engine.load("qml/tytrader.qml")
-        window = engine.rootObjects()[0]
         #window.setContextProperty('Service', service)
 
         loop.run_until_complete(test.printInterval())
