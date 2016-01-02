@@ -8,7 +8,7 @@ from quamash import QEventLoop, QThreadExecutor
 #import win32con
 
 from PyQt5.QtGui import QGuiApplication
-from PyQt5.QtQml import QQmlApplicationEngine
+from PyQt5.QtQml import QQmlApplicationEngine, QJSValue
 from PyQt5.QtCore import QUrl, QObject, pyqtSlot
 from PyQt5.QtQuick import QQuickView, QQuickWindow
 
@@ -56,7 +56,6 @@ class Test():
 
     @asyncio.coroutine
     def printInterval(self):
-
         inittime = loop.time()
         myRect = window.findChild(QObject, "myObject")
         myButton = window.findChild(QObject, "myButton")
@@ -153,6 +152,29 @@ class Service(QObject):
 
     @pyqtSlot()
     def onButtonClicked(self):
+
+        window = engine.rootObjects()[0]
+        ctx = engine.rootContext()
+        print(window)
+        # [ ] findChild가 아닌 뭘로 해야할까
+        #   --> 그냥 qml내의 object에서 호출 clone을 만들어준다던가 하는 식으로 가기로 결정. 시간 소모 그만
+        
+        #logic = window.findChild(QObject, "Logic")
+        #children = window.findChildren(QObject)
+        children = ctx.findChildren(QObject)
+        print("children : {}".format(children))
+        c = 0
+        for i in children:
+            print("{} : {}".format(c, i.objectName()))
+            c = c+ 1
+        #logic = engine.rootContext().findChild(QObject, "Logic")
+        myObject = window.findChild(QObject, "myObject")
+        #print("Logic : {}".format(logic))
+        print("myObject: {}".format(myObject))
+        #print(myObject)
+        #if logic:
+        #    logic.testjs()
+        QJSValue(testjs).call()
         self.loop.call_soon(wsock.send, b'x')
 
     @pyqtSlot()
@@ -196,6 +218,7 @@ with loop:
 
         #engine.load("main.qml")
         engine.load("qml/tytrader.qml")
+        window = engine.rootObjects()[0]
         #window.setContextProperty('Service', service)
 
         loop.run_until_complete(test.printInterval())

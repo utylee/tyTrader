@@ -4,7 +4,8 @@
 [x] yield from asy..sleep(.01) 말고 릴리즈 하는 방법은 없을지 연구
 	--> add_reader 와 socket pair를 통해 loop에서 이벤트 수신이 가능하다는 것을 확인
 [ ] pyqt와 qml(혹은 native qt)를 이용해 파이썬 상에서 bar 클래스 구현 
-	[ ] 연두색 사각형이 python에서 전달한 정보에 따라 크기가 변하는 샘플 제작
+	[ ] 핑크색 사각형이 python에서 전달한 정보에 따라 크기가 변하는 샘플 제작
+		[ ] 10개의 캔들을 python-->qml 로 setprice()함수를 통해 가격을 설정해 생성하는 샘플제작
 	[ ] 사각형 크기가 변할 때 마다 스프링 애니메이션이 동작하도록
 		[ ] qml 공부
 			[ ] createobject로 qml import 하는 방법 실습

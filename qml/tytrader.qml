@@ -43,6 +43,7 @@ ApplicationWindow {
 				Component.onCompleted : {
 					compo = Qt.createComponent("bar.qml");
 					bar = compo.createObject(rectBar)
+					Logic.testjs()
 					//bar = compo.createObject(root)
 				}
 				
