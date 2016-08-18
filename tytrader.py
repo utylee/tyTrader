@@ -10,6 +10,7 @@ from quamash import QEventLoop, QThreadExecutor
 from PyQt5.QtGui import QGuiApplication
 from PyQt5.QtQml import QQmlApplicationEngine, QJSValue
 from PyQt5.QtCore import QUrl, QObject, pyqtSlot
+# 이 라인이 없으면 Qt 이미지 로드 오류 어쩌고가 뜹니다
 from PyQt5.QtQuick import QQuickView, QQuickWindow
 
 app = QGuiApplication(sys.argv)
