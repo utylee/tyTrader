@@ -30,7 +30,7 @@ class Progressor:
         while 1:
             #print('kkk')
             #print(loop.time())
-            print(datetime.datetime.now().strftime("%S"))
+            #print(datetime.datetime.now().strftime("%S"))
             sec = int(datetime.datetime.now().strftime("%S")) 
             #if int(datetime.datetime.now().strftime("$S")) < 90 :
 

@@ -34,7 +34,6 @@ ApplicationWindow {
             txt1.text = t
             txt1.color = "red"
             //txt1.color = "darkred"
-            self.font.pointSize = 80
         }
         function blue (t) {
             txt1.text = t
