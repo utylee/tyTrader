@@ -12,7 +12,7 @@ ApplicationWindow {
     //flags : Qt.WindowTitleHint | Qt.WindowCloseButtonHint | Qt.WindowMinimizeButtonHint | Qt.WindowStaysOnTopHint 
     flags : Qt.WindowTitleHint | Qt.WindowStaysOnTopHint 
     width : 100
-    height : 70
+    height : 50
 
     Rectangle {
         anchors.centerIn : parent
@@ -22,7 +22,7 @@ ApplicationWindow {
             id : txt1
             text : qsTr("hello")
             anchors.centerIn : parent
-            font.pointSize : 30
+            font.pointSize : 24
 
         }
 
