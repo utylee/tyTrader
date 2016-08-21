@@ -12,7 +12,7 @@ ApplicationWindow {
     //flags : Qt.WindowTitleHint | Qt.WindowCloseButtonHint | Qt.WindowMinimizeButtonHint | Qt.WindowStaysOnTopHint 
     flags : Qt.WindowTitleHint | Qt.WindowStaysOnTopHint 
     width : 100
-    height : 70
+    height : 80
 
     Rectangle {
         anchors.centerIn : parent
