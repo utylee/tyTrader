@@ -11,7 +11,7 @@ ApplicationWindow {
     //flags : Qt.FramelessWindowHint 
     flags : Qt.WindowTitleHint | Qt.WindowCloseButtonHint | Qt.WindowMinimizeButtonHint | Qt.WindowStaysOnTopHint 
     width : 100
-    height : 50
+    height : 70
 
     Rectangle {
         anchors.centerIn : parent
@@ -21,7 +21,7 @@ ApplicationWindow {
             id : txt1
             text : qsTr("hello")
             anchors.centerIn : parent
-            font.pointSize : 42
+            font.pointSize : 30
 
         }
 
