@@ -23,6 +23,7 @@ ApplicationWindow {
             text : qsTr("hello")
             anchors.centerIn : parent
             font.pointSize : 24
+            font.weight : Font.Bold
 
         }
 
