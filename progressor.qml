@@ -11,7 +11,7 @@ ApplicationWindow {
     //flags : Qt.FramelessWindowHint 
     //flags : Qt.WindowTitleHint | Qt.WindowCloseButtonHint | Qt.WindowMinimizeButtonHint | Qt.WindowStaysOnTopHint 
     flags : Qt.WindowTitleHint | Qt.WindowStaysOnTopHint 
-    width : 100
+    width : 80
     height : 80
 
     Rectangle {
