@@ -29,10 +29,6 @@ class Progressor:
     def proc(self):
         #print("proc started")
         while 1:
-            #print(loop.time())
-            #print(datetime.datetime.now().strftime("%S"))
-            #sec = int(datetime.datetime.now().strftime("%S")) 
-            #print("into")
             sec = datetime.datetime.now().second
 
             if sec < 20 :
@@ -58,11 +54,6 @@ with loop:
 
     ctx = engine.rootContext()
     engine.load("progressor.qml")
-    #engine.load("progressor_multiple.qml")
-    #window = engine.rootObjects()[0]
-    #window = engine.rootObjects()[0].findChild("wnd1")
-    #root = engine.rootObjects()[0].findChild(QObject, "rootObj")
-    #root = engine.rootObjects()[0]
     window = engine.rootObjects()[0].findChild(QObject, "wnd")
     window1 = engine.rootObjects()[0].findChild(QObject, "wnd1")
 
