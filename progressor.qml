@@ -13,37 +13,53 @@ ApplicationWindow {
     flags : Qt.WindowTitleHint | Qt.WindowStaysOnTopHint 
     width : 80
     height : 80
+    color : "red"
 
     Rectangle {
         anchors.centerIn : parent
         objectName : "main"
 
+        /*
+        Rectangle {
+            id : color_rect
+            //anchors.centerIn : parent
+            anchors.fill : parent
+            anchors.margins : 10
+            color : "red"
+        }
+        */
         Text {
             id : txt1
-            text : qsTr("hello")
+            text : qsTr("progressor")
             anchors.centerIn : parent
             font.pointSize : 24
             font.weight : Font.Bold
+            color : "white"
 
         }
+        
 
         function green (t) {
             txt1.text = t
             //txt1.color = "lightgreen"
-            txt1.color = "green"
+            //txt1.color = "green"
+            root.color = "green"
         }
         function red (t) {
             txt1.text = t
-            txt1.color = "red"
+            //txt1.color = "red"
+            root.color = "red"
             //txt1.color = "darkred"
         }
         function blue (t) {
             txt1.text = t
-            txt1.color = "blue"
+            //txt1.color = "blue"
+            root.color = "blue"
         }
         function orange (t) {
             txt1.text = t
-            txt1.color = "orange"
+            //txt1.color = "orange"
+            root.color = "orange"
         }
     }
 }
