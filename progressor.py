@@ -31,22 +31,26 @@ class Progressor:
             #print('kkk')
             #print(loop.time())
             #print(datetime.datetime.now().strftime("%S"))
-            sec = int(datetime.datetime.now().strftime("%S")) 
-            #if int(datetime.datetime.now().strftime("$S")) < 90 :
+            #sec = int(datetime.datetime.now().strftime("%S")) 
+            sec = datetime.datetime.now().second
 
-            if sec <= 20 :
+            if sec < 20 :
                 obj.green(sec)
 
-            elif sec <= 40 :
+            elif sec < 40 :
                 obj.blue(sec)
 
-            elif sec <= 50 :
+            elif sec < 50 :
                 obj.orange(sec)
 
-            elif sec <= 60 :
+            elif sec < 60 :
                 obj.red(sec)
 
-            yield from asyncio.sleep(1)
+            else :
+                obj.green(sec)
+
+            sleeptime = 1000000 - datetime.datetime.now().microsecond
+            yield from asyncio.sleep(round(sleeptime * 0.000001, 2))
 
 
 with loop:
