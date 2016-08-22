@@ -27,27 +27,28 @@ class Progressor:
 
     @asyncio.coroutine
     def proc(self):
+        #print("proc started")
         while 1:
-            #print('kkk')
             #print(loop.time())
             #print(datetime.datetime.now().strftime("%S"))
             #sec = int(datetime.datetime.now().strftime("%S")) 
+            #print("into")
             sec = datetime.datetime.now().second
 
             if sec < 20 :
-                obj.green(sec)
+                self.obj.green(sec)
 
             elif sec < 40 :
-                obj.blue(sec)
+                self.obj.blue(sec)
 
             elif sec < 50 :
-                obj.orange(sec)
+                self.obj.orange(sec)
 
             elif sec < 60 :
-                obj.red(sec)
+                self.obj.red(sec)
 
             else :
-                obj.green(sec)
+                self.obj.green(sec)
 
             sleeptime = 1000000 - datetime.datetime.now().microsecond
             yield from asyncio.sleep(round(sleeptime * 0.000001, 2))
@@ -57,13 +58,27 @@ with loop:
 
     ctx = engine.rootContext()
     engine.load("progressor.qml")
-    window = engine.rootObjects()[0]
+    #engine.load("progressor_multiple.qml")
+    #window = engine.rootObjects()[0]
+    #window = engine.rootObjects()[0].findChild("wnd1")
+    #root = engine.rootObjects()[0].findChild(QObject, "rootObj")
+    #root = engine.rootObjects()[0]
+    window = engine.rootObjects()[0].findChild(QObject, "wnd")
+    window1 = engine.rootObjects()[0].findChild(QObject, "wnd1")
+
     window.show()
+    window1.show()
 
     obj = window.findChild(QObject, "main")
-    #obj.printa('56')
+    obj1 = window1.findChild(QObject, "main1")
 
     prog = Progressor(obj)
+    prog1 = Progressor(obj1)
 
-    loop.run_until_complete(prog.proc())
-    #loop.run_forever()
+    #loop.run_until_complete(prog.proc())
+    asyncio.async(prog.proc())
+    asyncio.async(prog1.proc())
+    
+    #loop.async(prog1.proc())
+
+    loop.run_forever()
