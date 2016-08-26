@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Window 2.2 
+import QtGraphicalEffects 1.0
 
 ApplicationWindow {
 
@@ -12,7 +13,45 @@ ApplicationWindow {
     //flags : Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint 
     //flags : Qt.FramelessWindowHint 
     //flags : Qt.WindowTitleHint | Qt.WindowCloseButtonHint | Qt.WindowMinimizeButtonHint | Qt.WindowStaysOnTopHint 
-    //
+    
+    // 서큘라 프로그레션 테스트 윈도우 입니다
+    Window {
+        id : "wnd_circle"
+        objectName : "wnd2"
+        x : 0
+        y : 0
+        width : 100
+        height : 100
+
+        Rectangle {
+            id : "outer_ring"
+            z: 0
+            anchors.fill : parent
+            radius : Math.max(width, height) / 2
+            
+        }
+
+        Rectangle {
+            id: "inner_ring"
+            z: 1
+            anchors.fill : parent
+            anchors.margins : 10
+            radius : outer_ring.radius
+            
+        }
+
+        ConicalGradient {
+            source : innerRing
+            anchors.fill : parent
+            gradient :
+                Gradient {
+                    GradientStop { position: 0.00; color : "gray" }
+                    GradientStop { position: 0.5; color : "gray" }
+                    
+                }
+        }
+
+    }
     Window {
         id : "wnd_id"
         objectName : "wnd"

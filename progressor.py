@@ -56,9 +56,11 @@ with loop:
     engine.load("progressor.qml")
     window = engine.rootObjects()[0].findChild(QObject, "wnd")
     window1 = engine.rootObjects()[0].findChild(QObject, "wnd1")
+    window2 = engine.rootObjects()[0].findChild(QObject, "wnd2")
 
     window.show()
     window1.show()
+    window2.show()
 
     obj = window.findChild(QObject, "main")
     obj1 = window1.findChild(QObject, "main1")
