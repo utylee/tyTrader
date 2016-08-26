@@ -6,13 +6,15 @@ import QtGraphicalEffects 1.0
 ApplicationWindow {
 
     id : root 
-    //objectName : "rootObj"
+    objectName : "rootObj"
     //objectName : "main" 
     // 프레임없이, 항상위에 flag , 중복 flag는 쉼표나 | 기호 모두 수용하는 듯 합니다 
     //flags : Qt.FramelessWindowHint, Qt.WindowStaysOnTopHint 
     //flags : Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint 
     //flags : Qt.FramelessWindowHint 
     //flags : Qt.WindowTitleHint | Qt.WindowCloseButtonHint | Qt.WindowMinimizeButtonHint | Qt.WindowStaysOnTopHint 
+    //flags : Qt.WindowTitleHint | Qt.WindowStaysOnTopHint 
+    //
     
     // 서큘라 프로그레션 테스트 윈도우 입니다
     Window {
@@ -53,11 +55,16 @@ ApplicationWindow {
 
     }
     Window {
-        id : "wnd_id"
-        objectName : "wnd"
-        flags : Qt.WindowTitleHint | Qt.WindowStaysOnTopHint 
-        x : 1022 
-        y : 523 
+        id : dummy_id
+        objectName : "wnd_dummy"
+        flags : Qt.WindowTitleHint // | Qt.WindowStaysOnTopHint 
+        //flags : Qt.WindowStaysOnTopHint
+        //flags : Qt.Window | Qt.WindowStaysOnTopHint 
+        //flags : Qt.Window 
+        //x : 1022 
+        //y : 523 
+        x : 0 
+        y : 0 
         width : 80
         height : 80
     
@@ -67,15 +74,6 @@ ApplicationWindow {
             anchors.centerIn : parent
             objectName : "main"
     
-            /*
-            rectangle {
-                id : color_rect
-                //anchors.centerin : parent
-                anchors.fill : parent
-                anchors.margins : 10
-                color : "red"
-            }
-            */
             Text {
                 id : "txt"
                 text : qsTr("downer")
@@ -91,32 +89,34 @@ ApplicationWindow {
                 txt.text = t
                 //txt1.color = "lightgreen"
                 //txt1.color = "green"
-                wnd_id.color = "green"
+                dummy_id.color = "green"
             }
             function red (t) {
                 txt.text = t
                 //txt1.color = "red"
-                wnd_id.color = "red"
+                dummy_id.color = "red"
                 //txt1.color = "darkred"
             }
             function blue (t) {
                 txt.text = t
                 //txt1.color = "blue"
-                wnd_id.color = "blue"
+                dummy_id.color = "blue"
             }
             function orange (t) {
                 txt.text = t
                 //txt1.color = "orange"
-                wnd_id.color = "orange"
+                dummy_id.color = "orange"
             }
             
         }
     }
 
+
     Window {
-        id : "wnd1_id"
+        id : wnd1_id
         objectName : "wnd1"
         flags : Qt.WindowTitleHint | Qt.WindowStaysOnTopHint 
+        //flags : Qt.Window | Qt.WindowStaysOnTopHint 
         x : 480 
         y : 60 
         width : 80
@@ -128,15 +128,6 @@ ApplicationWindow {
             anchors.centerIn : parent
             objectName : "main1"
     
-            /*
-            rectangle {
-                id : color_rect
-                //anchors.centerin : parent
-                anchors.fill : parent
-                anchors.margins : 10
-                color : "red"
-            }
-            */
             Text {
                 id : "txt1"
                 text : qsTr("upper")
@@ -173,39 +164,69 @@ ApplicationWindow {
             
         }
     }
-    /*
-    Item {
-        function green (t) {
-            txt.text = t
-            txt1.text = t
-            //txt1.color = "lightgreen"
-            //txt1.color = "green"
-            wnd_id.color = "green"
-            wnd_id1.color = "green"
+
+    Window {
+        id : wnd_id2
+        objectName : "wnd2"
+        flags : Qt.WindowTitleHint | Qt.WindowStaysOnTopHint 
+        //flags : Qt.WindowStaysOnTopHint
+        //flags : Qt.Window | Qt.WindowStaysOnTopHint 
+        //flags : Qt.Window 
+        x : 1022 
+        y : 523 
+        width : 80
+        height : 80
+    
+        color : "red"
+    
+        Rectangle {
+            anchors.centerIn : parent
+            objectName : "main2"
+    
+            /*
+            rectangle {
+                id : color_rect
+                //anchors.centerin : parent
+                anchors.fill : parent
+                anchors.margins : 10
+                color : "red"
             }
-        function red (t) {
-            txt.text = t
-            txt1.text = t
-            //txt1.color = "red"
-            wnd_id.color = "red"
-            wnd_id1.color = "red"
-            //txt1.color = "darkred"
-        }
-        function blue (t) {
-            txt.text = t
-            txt1.text = t
-            //txt1.color = "blue"
-            wnd_id.color = "blue"
-            wnd_id1.color = "blue"
-        }
-        function orange (t) {
-            txt.text = t
-            txt1.text = t
-            //txt1.color = "orange"
-            wnd_id.color = "orange"
-            wnd_id1.color = "orange"
+            */
+            Text {
+                id : "txt2"
+                text : qsTr("downer")
+                anchors.centerIn : parent
+                font.pointSize : 24
+                font.weight : Font.Bold
+                color : "white"
+    
+            }
+            
+             
+            function green (t) {
+                txt2.text = t
+                //txt1.color = "lightgreen"
+                //txt1.color = "green"
+                wnd_id2.color = "green"
+            }
+            function red (t) {
+                txt2.text = t
+                //txt1.color = "red"
+                wnd_id2.color = "red"
+                //txt1.color = "darkred"
+            }
+            function blue (t) {
+                txt2.text = t
+                //txt1.color = "blue"
+                wnd_id2.color = "blue"
+            }
+            function orange (t) {
+                txt2.text = t
+                //txt1.color = "orange"
+                wnd_id2.color = "orange"
+            }
+            
         }
     }
-    */
 }
 
