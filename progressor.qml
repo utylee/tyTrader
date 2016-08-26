@@ -17,6 +17,8 @@ ApplicationWindow {
     //
     
     // 서큘라 프로그레션 테스트 윈도우 입니다
+     
+    /*
     Window {
         id : "wnd_circle"
         objectName : "wnd2"
@@ -54,6 +56,9 @@ ApplicationWindow {
         }
 
     }
+
+    */
+
     Window {
         id : dummy_id
         objectName : "wnd_dummy"
