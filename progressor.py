@@ -63,21 +63,29 @@ with loop:
     #window = engine.rootObjects()[0].findChild("wnd1")
     #root = engine.rootObjects()[0].findChild(QObject, "rootObj")
     #root = engine.rootObjects()[0]
-    window = engine.rootObjects()[0].findChild(QObject, "wnd")
+
+    window = engine.rootObjects()[0].findChild(QObject, "wnd_dummy")
     window1 = engine.rootObjects()[0].findChild(QObject, "wnd1")
+    window2 = engine.rootObjects()[0].findChild(QObject, "wnd2")
 
     window.show()
     window1.show()
+    window2.show()
 
     obj = window.findChild(QObject, "main")
     obj1 = window1.findChild(QObject, "main1")
+    obj2 = window2.findChild(QObject, "main2")
 
     prog = Progressor(obj)
     prog1 = Progressor(obj1)
+    prog2 = Progressor(obj2)
+
+    window.hide()
 
     #loop.run_until_complete(prog.proc())
     asyncio.async(prog.proc())
     asyncio.async(prog1.proc())
+    asyncio.async(prog2.proc())
     
     #loop.async(prog1.proc())
 
