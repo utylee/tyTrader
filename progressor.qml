@@ -120,7 +120,8 @@ ApplicationWindow {
     Window {
         id : wnd1_id
         objectName : "wnd1"
-        flags : Qt.WindowTitleHint | Qt.WindowStaysOnTopHint 
+        //flags : Qt.WindowTitleHint | Qt.WindowStaysOnTopHint 
+        flags :  Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint 
         //flags : Qt.Window | Qt.WindowStaysOnTopHint 
         x : 480 
         y : 60 
@@ -173,7 +174,8 @@ ApplicationWindow {
     Window {
         id : wnd_id2
         objectName : "wnd2"
-        flags : Qt.WindowTitleHint | Qt.WindowStaysOnTopHint 
+        //flags : Qt.WindowTitleHint | Qt.WindowStaysOnTopHint 
+        flags : Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint 
         //flags : Qt.WindowStaysOnTopHint
         //flags : Qt.Window | Qt.WindowStaysOnTopHint 
         //flags : Qt.Window 
