@@ -29,22 +29,28 @@ class Progressor:
     def proc(self):
         #print("proc started")
         while 1:
-            sec = datetime.datetime.now().second
+            #sec = datetime.datetime.now().second
+            now = datetime.datetime.now()
+
+            sec = now.second
+            minu = now.minute
 
             if sec < 20 :
-                self.obj.green(sec)
+                #self.obj.green(sec)
+                self.obj.green(sec, minu)
 
             elif sec < 40 :
-                self.obj.blue(sec)
+                #self.obj.blue(sec)
+                self.obj.blue(sec, minu)
 
             elif sec < 50 :
-                self.obj.orange(sec)
+                self.obj.orange(sec, minu)
 
             elif sec < 60 :
-                self.obj.red(sec)
+                self.obj.red(sec, minu)
 
             else :
-                self.obj.green(sec)
+                self.obj.green(sec, minu)
 
             sleeptime = 1000000 - datetime.datetime.now().microsecond
             yield from asyncio.sleep(round(sleeptime * 0.000001, 2))

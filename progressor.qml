@@ -143,27 +143,41 @@ ApplicationWindow {
                 color : "white"
     
             }
+            //분 수치 추가
+            Text {
+                id : "min1"
+                text : qsTr("m")
+                x : -5
+                y : 18
+                font.pointSize : 8 
+                //font.weight : Font.Bold
+                color : "lightgrey"
+            }
             
             
-            function green (t) {
+            function green (t, m) {
                 txt1.text = t
+                min1.text = m
                 //txt1.color = "lightgreen"
                 //txt1.color = "green"
                 wnd1_id.color = "green"
             }
-            function red (t) {
+            function red (t, m) {
                 txt1.text = t
+                min1.text = m
                 //txt1.color = "red"
                 wnd1_id.color = "red"
                 //txt1.color = "darkred"
             }
-            function blue (t) {
+            function blue (t, m) {
                 txt1.text = t
+                min1.text = m
                 //txt1.color = "blue"
                 wnd1_id.color = "blue"
             }
-            function orange (t) {
+            function orange (t, m) {
                 txt1.text = t
+                min1.text = m
                 //txt1.color = "orange"
                 wnd1_id.color = "orange"
             }
@@ -209,26 +223,40 @@ ApplicationWindow {
     
             }
             
+            //분 수치 추가
+            Text {
+                id : "min2"
+                text : qsTr("m")
+                x : -5
+                y : 18
+                font.pointSize : 8
+                //font.weight : Font.Bold
+                color : "lightgrey"
+            }
              
-            function green (t) {
+            function green (t, m) {
                 txt2.text = t
+                min2.text = m
                 //txt1.color = "lightgreen"
                 //txt1.color = "green"
                 wnd_id2.color = "green"
             }
-            function red (t) {
+            function red (t, m) {
                 txt2.text = t
+                min2.text = m
                 //txt1.color = "red"
                 wnd_id2.color = "red"
                 //txt1.color = "darkred"
             }
-            function blue (t) {
+            function blue (t, m) {
                 txt2.text = t
+                min2.text = m
                 //txt1.color = "blue"
                 wnd_id2.color = "blue"
             }
-            function orange (t) {
+            function orange (t, m) {
                 txt2.text = t
+                min2.text = m
                 //txt1.color = "orange"
                 wnd_id2.color = "orange"
             }

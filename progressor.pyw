@@ -29,26 +29,28 @@ class Progressor:
     def proc(self):
         #print("proc started")
         while 1:
-            #print(loop.time())
-            #print(datetime.datetime.now().strftime("%S"))
-            #sec = int(datetime.datetime.now().strftime("%S")) 
-            #print("into")
-            sec = datetime.datetime.now().second
+            #sec = datetime.datetime.now().second
+            now = datetime.datetime.now()
+
+            sec = now.second
+            minu = now.minute
 
             if sec < 20 :
-                self.obj.green(sec)
+                #self.obj.green(sec)
+                self.obj.green(sec, minu)
 
             elif sec < 40 :
-                self.obj.blue(sec)
+                #self.obj.blue(sec)
+                self.obj.blue(sec, minu)
 
             elif sec < 50 :
-                self.obj.orange(sec)
+                self.obj.orange(sec, minu)
 
             elif sec < 60 :
-                self.obj.red(sec)
+                self.obj.red(sec, minu)
 
             else :
-                self.obj.green(sec)
+                self.obj.green(sec, minu)
 
             sleeptime = 1000000 - datetime.datetime.now().microsecond
             yield from asyncio.sleep(round(sleeptime * 0.000001, 2))
@@ -64,6 +66,7 @@ with loop:
     #root = engine.rootObjects()[0].findChild(QObject, "rootObj")
     #root = engine.rootObjects()[0]
 
+    #window = engine.rootObjects()[0].findChild(QObject, "wnd")
     window = engine.rootObjects()[0].findChild(QObject, "wnd_dummy")
     window1 = engine.rootObjects()[0].findChild(QObject, "wnd1")
     window2 = engine.rootObjects()[0].findChild(QObject, "wnd2")
